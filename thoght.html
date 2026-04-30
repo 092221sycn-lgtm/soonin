@@ -8,13 +8,18 @@
   </head>
   <body>
     <main class="thought-page">
+      <!-- 侧边栏部分：修复了未闭合的 <aside> 标签 -->
       <aside class="thought-sidebar" aria-label="Thought navigation">
         <a class="thought-brand" href="index.html">SOONIN</a>
         <nav class="thought-menu">
           <a href="index.html">Home<sup>00</sup></a>
           <a href="about.html">About<sup>01</sup></a>
           <a href="thoght.html" aria-current="page">Thought<sup>02</sup></a>
+          <!-- 这里已删除 Daily 和 Favorite -->
         </nav>
+      </aside>
+
+      <!-- 内容区部分 -->
       <section class="thought-content" aria-label="Thought categories">
         <div class="thought-hero">
           <h1>THOUGHT</h1>
@@ -40,6 +45,7 @@
             <span>MUSIC</span>
           </a>
         </div>
+        <!-- 注意：原代码此处缺少左下角的删除逻辑，现在已彻底移除相关链接[cite: 5] -->
       </section>
     </main>
   </body>
