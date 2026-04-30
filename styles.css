@@ -1,239 +1,123 @@
 /* 
-  SOONIN EDITORIAL SYSTEM - FULL VERSION
-  Style: Minimalist Magazine / Vogue / Low Saturation
+  SOONIN EDITORIAL SYSTEM - FULL VERSION (ULTRA MINIMALIST)
+  Style: White Space / Modern Sans / High Contrast 
 */
 
-/* --- 1. 基础注入与纸张纹理 --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+/* --- 1. 基础注入 --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-  --primary-font: 'Inter', -apple-system, sans-serif;
-  --display-font: 'Playfair Display', Georgia, serif;
-  --bg-paper: #f4f3ef;      /* 物理纸张底色 */
-  --text-main: #1a1a1a;     /* 深墨色而非纯黑 */
-  --text-muted: #64748b;    /* 低饱和辅助色 */
-  --border-subtle: #d1d1d1; /* 纸张折痕感线条 */
+    --primary-font: 'Inter', -apple-system, sans-serif;
+    --display-font: 'Playfair Display', Georgia, serif;
+    --bg-paper: #ffffff;      /* 修改为纯白色背景 */
+    --text-main: #1a1a1a;     /* 保持深墨色 */
+    --text-muted: #888888;    /* 辅助文字降噪 */
+    --border-subtle: #eeeeee; /* 更淡的分割线 */
 }
 
 * {
-  box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  background-color: var(--bg-paper);
-  color: var(--text-main);
-  font-family: var(--primary-font);
-  line-height: 1.6;
-  position: relative;
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--bg-paper);
+    color: var(--text-main);
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    position: relative;
 }
 
-/* 核心：物理颗粒感纹理层 */
+/* 移除纹理层，确保背景纯净 */
 body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background-image: url("https://www.transparenttextures.com/patterns/felt.png"); 
-  opacity: 0.035; /* 极低透明度，模拟纸张纤维 */
-  pointer-events: none;
-  z-index: 9999;
+    display: none; 
 }
 
-/* --- 2. 侧边栏 & 导航 (Magazine Sidebar) --- */
-.thought-sidebar, .site-header {
-  background: transparent;
-  padding: 60px 40px;
-  border-right: 1px solid var(--border-subtle);
-}
-
+/* --- 2. 品牌标识 (SOONIN - 极致简约版) --- */
 .thought-brand {
- /* 字体：切换为极简无衬线体，字重设为最轻 */
-  font-family: 'Inter', -apple-system, sans-serif;
-  font-weight: 200; 
-  
-  /* 尺寸：显著放大 */
-  font-size: 2.2rem; 
-  
-  /* 颜色：使用高质感的灰白色 */
-  color: #f8fafc; 
-  
-  /* 排版：极宽间距，体现冷冷的高级感 */
-  letter-spacing: 0.6em; 
-  text-transform: uppercase;
-  
-  /* 间距与对齐 */
-  margin-bottom: 100px;
-  padding: 0 40px;
-  line-height: 1;
-  
-  /* 微弱阴影：确保在浅色纸张背景上依然有微妙的立体感 */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  
-  /* 混合模式：如果是深色背景，建议开启此项增加融合感 */
-  /* mix-blend-mode: difference; */
+    /* 字体：极致简约无衬线体 */
+    font-family: 'Inter', sans-serif;
+    /* 字重：极细，体现高级感 */
+    font-weight: 100; 
+    
+    /* 尺寸：显著放大 */
+    font-size: 3.5rem; 
+    
+    /* 颜色：在白底下使用深黑色 */
+    color: var(--text-main);
+    
+    /* 排版：极宽间距，横向舒展感 */
+    letter-spacing: 0.8em; 
+    text-transform: uppercase;
+    
+    /* 布局 */
+    margin-bottom: 120px;
+    padding: 0 40px;
+    line-height: 1;
+    text-align: center;
+    text-shadow: none; /* 移除投影，追求平面化 */
 }
 
-/* 针对移动端的自适应缩小 */
+/* 移动端标识自适应 */
 @media (max-width: 768px) {
-  .thought-brand {
-    font-size: 1.5rem;
-    letter-spacing: 0.4em;
-    margin-bottom: 60px;
-  }
+    .thought-brand {
+        font-size: 1.8rem;
+        letter-spacing: 0.5em;
+        margin-bottom: 60px;
+    }
+}
+
+/* --- 3. 导航菜单 --- */
+.thought-sidebar, .site-header {
+    background: transparent;
+    padding: 60px 40px;
+}
 
 .thought-menu {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 
 .thought-menu a {
-  font-size: 0.75rem;
-  font-weight: 400;
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: var(--text-muted);
-  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+    font-size: 0.7rem;
+    font-weight: 400;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--text-muted);
+    transition: all 0.4s ease;
 }
 
 .thought-menu a:hover,
 .thought-menu a[aria-current="page"] {
-  color: var(--text-main);
-  letter-spacing: 0.35em; /* 悬停时的舒张感 */
-  padding-left: 5px;
+    color: var(--text-main);
+    letter-spacing: 0.3em;
 }
 
-/* --- 3. 页面布局 (Editorial Layout) --- */
-.content-page, .thought-content, .baby-page {
-  padding: 100px clamp(40px, 10vw, 150px);
-  max-width: 1600px;
-  margin: 0 auto;
+/* --- 4. 杂志摄影效果 (Photography) --- */
+.magazine-photo, .photo-large img, .photo-small img, .photo-medium img {
+    filter: grayscale(100%); /* 默认黑白 */
+    transition: all 1s ease;
 }
 
-/* Hero 区域：高压迫感大标题 */
-.thought-hero, .baby-hero {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  margin-bottom: 120px;
+.magazine-photo:hover {
+    filter: grayscale(0%);
 }
 
-h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
-  font-family: var(--primary-font);
-  font-weight: 800;
-  font-size: clamp(80px, 15vw, 180px);
-  letter-spacing: -0.07em; /* 标题紧缩，产生视觉冲击 */
-  line-height: 0.8;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.hero-description, .thought-hero p {
-  font-weight: 300;
-  font-size: 1.15rem;
-  line-height: 1.8;
-  color: var(--text-muted);
-  max-width: 500px;
-  text-align: justify; /* 杂志式两端对齐 */
-}
-
-/* --- 4. 章节与分类 (Section Styling) --- */
-.thought-section-title {
-  margin: 80px 0 60px 0;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 15px;
-  display: flex;
-  align-items: baseline;
-  gap: 15px;
-}
-
-.thought-section-title span {
-  font-family: var(--display-font);
-  font-style: italic;
-  font-size: 1.8rem;
-  color: #cbd5e1;
-}
-
-.thought-section-title h2 {
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-weight: 600;
-  margin: 0;
-}
-
-/* 分类圆圈：低饱和度 + 柔和投影 */
-.thought-circle {
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-}
-
-.thought-circle:hover {
-  transform: scale(1.02) translateY(-5px);
-}
-
-.thought-circle-movie { background: #f2e6d9; } /* 奶咖色 */
-.thought-circle-book  { background: #d9e2e5; } /* 灰蓝色 */
-.thought-circle-music { background: #ffffff; border: 1px solid var(--border-subtle) !important; }
-
-/* --- 5. 杂志摄影效果 (Photography) --- */
-.magazine-photo, .baby-photo {
-  filter: grayscale(100%) contrast(105%) sepia(5%); /* 胶片质感 */
-  transition: filter 1.2s ease;
-  box-shadow: 0 0 1px rgba(0,0,0,0.2); /* 模拟相纸边缘 */
-}
-
-.magazine-photo:hover, .baby-photo:hover {
-  filter: grayscale(0%) contrast(100%) sepia(0%);
-}
-
-/* --- 6. 正文排版 (Typography Details) --- */
-.magazine-text, .baby-story-text {
-  column-count: 2; /* 双栏排版 */
-  column-gap: 60px;
-  text-align: justify;
-}
-
-.magazine-text p::first-letter {
-  font-family: var(--display-font);
-  font-size: 4.5rem;
-  float: left;
-  line-height: 0.85;
-  padding-right: 15px;
-  color: var(--text-main);
-}
-
-/* 页脚：杂志页码感 */
-.magazine-footer {
-  margin-top: 150px;
-  border-top: 1px solid var(--border-subtle);
-  padding: 20px 0;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: #999;
-}
-
-/* --- 7. 响应式适配 --- */
+/* --- 5. 响应式适配 (通用) --- */
 @media (max-width: 1024px) {
     .magazine-text, .baby-story-text {
         column-count: 1;
     }
-    .thought-sidebar {
-        padding: 30px;
-    }
-} /* <--- 这里之前漏掉了一个反花括号，导致后面的代码在大屏下失效 */
+}
 
-/* --- 8. 杂志跨页布局 (About Me 专用) --- */
+/* --- 6. 杂志跨页布局 (About Me 专用) --- */
 .magazine-spread {
     display: flex;
-    background-color: #f4f3ef;
+    background-color: var(--bg-paper);
     min-height: 100vh;
     padding: 0;
     overflow-x: hidden;
@@ -241,11 +125,11 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
 
 .page-left, .page-right {
     flex: 1;
-    padding: 60px;
+    padding: 80px 60px;
     display: flex;
     flex-direction: column;
     position: relative;
-    border-right: 1px solid rgba(0,0,0,0.05);
+    border-right: 1px solid var(--border-subtle);
 }
 
 .editorial-header {
@@ -253,57 +137,56 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     justify-content: space-between;
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: #999;
-    margin-bottom: 40px;
+    letter-spacing: 0.15em;
+    color: #bbb;
+    margin-bottom: 60px;
 }
 
 .editorial-content {
     display: flex;
-    gap: 40px;
-    margin-bottom: 60px;
+    gap: 50px;
+    margin-bottom: 80px;
 }
 
 .meta-sidebar {
     width: 120px;
-    font-size: 11px;
-    line-height: 1.6;
-    color: #666;
-}
-
-.main-article {
-    flex: 1;
+    font-size: 10px;
+    line-height: 1.8;
+    color: var(--text-muted);
+    text-transform: uppercase;
 }
 
 .lead-text {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.6;
     text-align: justify;
+    color: var(--text-main);
 }
 
+/* 图片布局 */
 .photo-large {
     margin-top: auto;
     width: 100%;
-    height: 400px;
+    height: 420px;
+    overflow: hidden;
 }
 
 .photo-large img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(20%);
 }
 
 .photo-grid-top {
     display: flex;
-    gap: 20px;
-    height: 450px;
-    margin-bottom: 40px;
+    gap: 30px;
+    height: 480px;
+    margin-bottom: 60px;
 }
 
-.photo-small { width: 35%; height: 60%; }
-.photo-medium { width: 65%; height: 100%; }
+.photo-small { width: 35%; height: 65%; overflow: hidden; }
+.photo-medium { width: 65%; height: 100%; overflow: hidden; }
 
 .photo-small img, .photo-medium img {
     width: 100%;
@@ -311,31 +194,36 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     object-fit: cover;
 }
 
+/* 右页底部排版 */
 .editorial-footer-content {
     display: flex;
-    gap: 30px;
+    gap: 40px;
+    margin-top: auto;
 }
 
 .vertical-text {
     writing-mode: vertical-rl;
-    font-size: 12px;
-    color: #888;
-    letter-spacing: 0.2em;
-    height: 300px;
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 0.3em;
+    height: 250px;
 }
 
 .column-text {
     column-count: 2;
-    column-gap: 30px;
-    font-size: 12px;
-    line-height: 1.8;
+    column-gap: 40px;
+    font-size: 11px;
+    line-height: 2;
     text-align: justify;
-    color: #333;
+    color: #444;
 }
 
+/* 针对 About Me 的移动端适配 */
 @media (max-width: 1024px) {
     .magazine-spread { flex-direction: column; }
+    .page-left, .page-right { border-right: none; border-bottom: 1px solid var(--border-subtle); padding: 40px; }
     .photo-grid-top { height: auto; flex-direction: column; }
-    .photo-small, .photo-medium { width: 100%; }
+    .photo-small, .photo-medium { width: 100%; height: 300px; }
     .column-text { column-count: 1; }
+    .editorial-content { flex-direction: column; gap: 20px; }
 }
