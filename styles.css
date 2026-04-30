@@ -228,4 +228,120 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
   .thought-sidebar {
     padding: 30px;
   }
+/* 杂志跨页容器 */
+.magazine-spread {
+    display: flex;
+    background-color: #f4f3ef; /* 纸张色 */
+    min-height: 100vh;
+    padding: 0;
+    overflow-x: hidden;
 }
+
+/* 左右页面通用 */
+.page-left, .page-right {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-right: 1px solid rgba(0,0,0,0.05); /* 模拟中缝 */
+}
+
+/* 页眉 */
+.editorial-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #999;
+    margin-bottom: 40px;
+}
+
+/* 左页：文字排版 */
+.editorial-content {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.meta-sidebar {
+    width: 120px;
+    font-size: 11px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.main-article {
+    flex: 1;
+}
+
+.lead-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: justify;
+}
+
+/* 左页大图（第三张：光影） */
+.photo-large {
+    margin-top: auto;
+    width: 100%;
+    height: 400px;
+}
+
+.photo-large img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%);
+}
+
+/* 右页：图片网格 */
+.photo-grid-top {
+    display: flex;
+    gap: 20px;
+    height: 450px;
+    margin-bottom: 40px;
+}
+
+.photo-small { width: 35%; height: 60%; } /* 第四张：人像 */
+.photo-medium { width: 65%; height: 100%; } /* 第五张：咖啡 */
+
+.photo-small img, .photo-medium img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 右页底部：双栏文字 + 竖排文字 */
+.editorial-footer-content {
+    display: flex;
+    gap: 30px;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    font-size: 12px;
+    color: #888;
+    letter-spacing: 0.2em;
+    height: 300px;
+}
+
+.column-text {
+    column-count: 2;
+    column-gap: 30px;
+    font-size: 12px;
+    line-height: 1.8;
+    text-align: justify;
+    color: #333;
+}
+
+/* 响应式：手机端变回单栏 */
+@media (max-width: 1024px) {
+    .magazine-spread { flex-direction: column; }
+    .photo-grid-top { height: auto; flex-direction: column; }
+    .photo-small, .photo-medium { width: 100%; }
+    .column-text { column-count: 1; }
+}
+  
