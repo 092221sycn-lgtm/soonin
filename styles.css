@@ -50,13 +50,39 @@ body::before {
 }
 
 .thought-brand {
-  font-family: var(--primary-font);
-  letter-spacing: 0.4em; /* 奢侈品级字间距 */
-  font-weight: 200;
+ /* 字体：切换为极简无衬线体，字重设为最轻 */
+  font-family: 'Inter', -apple-system, sans-serif;
+  font-weight: 200; 
+  
+  /* 尺寸：显著放大 */
+  font-size: 2.2rem; 
+  
+  /* 颜色：使用高质感的灰白色 */
+  color: #f8fafc; 
+  
+  /* 排版：极宽间距，体现冷冷的高级感 */
+  letter-spacing: 0.6em; 
   text-transform: uppercase;
-  font-size: 0.9rem;
-  margin-bottom: 80px;
+  
+  /* 间距与对齐 */
+  margin-bottom: 100px;
+  padding: 0 40px;
+  line-height: 1;
+  
+  /* 微弱阴影：确保在浅色纸张背景上依然有微妙的立体感 */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  
+  /* 混合模式：如果是深色背景，建议开启此项增加融合感 */
+  /* mix-blend-mode: difference; */
 }
+
+/* 针对移动端的自适应缩小 */
+@media (max-width: 768px) {
+  .thought-brand {
+    font-size: 1.5rem;
+    letter-spacing: 0.4em;
+    margin-bottom: 60px;
+  }
 
 .thought-menu {
   display: flex;
