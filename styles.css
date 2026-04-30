@@ -1,327 +1,205 @@
-/* --- 基础重置与字体注入 --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600&family=Playfair+Display:wght@400;500;700&display=swap');
+/* 
+  SOONIN EDITORIAL SYSTEM - FULL VERSION
+  Style: Minimalist Magazine / Vogue / Low Saturation
+*/
+
+/* --- 1. 基础注入与纸张纹理 --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+:root {
+  --primary-font: 'Inter', -apple-system, sans-serif;
+  --display-font: 'Playfair Display', Georgia, serif;
+  --bg-paper: #f4f3ef;      /* 物理纸张底色 */
+  --text-main: #1a1a1a;     /* 深墨色而非纯黑 */
+  --text-muted: #64748b;    /* 低饱和辅助色 */
+  --border-subtle: #d1d1d1; /* 纸张折痕感线条 */
+}
 
 * {
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased; /* 字体抗锯齿，更清晰 */
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
 body {
-    margin: 0;
-    min-height: 100vh;
-    background: #ffffff;
-    color: #334155; /* 避免纯黑，使用深灰增加高级感 */
-    font-family: 'Inter', -apple-system, sans-serif;
-    line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--bg-paper);
+  color: var(--text-main);
+  font-family: var(--primary-font);
+  line-height: 1.6;
+  position: relative;
 }
 
-/* --- 导航栏：轻盈化 --- */
-.site-header {
-    height: 80px;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px); /* 磨砂玻璃效果 */
-    border-bottom: 1px solid #f1f5f9;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+/* 核心：物理颗粒感纹理层 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/felt.png"); 
+  opacity: 0.035; /* 极低透明度，模拟纸张纤维 */
+  pointer-events: none;
+  z-index: 9999;
 }
 
-.main-nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 48px;
-    height: 100%;
-}
-
-.main-nav a {
-    color: #64748b;
-    font-size: 0.95rem;
-    font-weight: 300;
-    text-decoration: none;
-    text-transform: uppercase;
-    letter-spacing: 0.15em; /* 关键：拉大字间距 */
-    transition: all 0.3s ease;
-}
-
-.main-nav a:hover,
-.main-nav a[aria-current="page"] {
-    color: #0f172a;
-    letter-spacing: 0.25em; /* 悬停时舒张 */
-}
-
-/* --- 页面通用布局 --- */
-.baby-page, .content-page {
-    padding: 100px clamp(24px, 8vw, 120px);
-    background: #fafafa;
-}
-
-/* --- Hero 区域：Vogue 风格 --- */
-.baby-hero {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 60px;
-    align-items: center;
-    margin-bottom: 100px;
-}
-
-.baby-hero-copy h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(80px, 12vw, 160px);
-    font-weight: 500;
-    color: #0f172a;
-    line-height: 0.85;
-    letter-spacing: -0.04em;
-    margin: 0;
-}
-
-.section-kicker {
-    font-family: 'Inter', sans-serif;
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.4em; /* 极宽间距，典型奢侈品风格 */
-    color: #94a3b8;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-}
-
-.baby-hero-copy p:not(.section-kicker) {
-    margin-top: 40px;
-    font-size: 1.2rem;
-    color: #475569;
-    font-weight: 300;
-    line-height: 1.8;
-    max-width: 480px;
-}
-
-.baby-photo {
-    border-radius: 2px; /* 近乎直角更显利落 */
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05); /* 极淡的投影 */
-    overflow: hidden;
-}
-
-.baby-photo img {
-    filter: grayscale(100%); /* 默认黑白 */
-    transition: filter 0.8s ease;
-}
-
-.baby-photo:hover img {
-    filter: grayscale(0%);
-}
-
-/* --- 信息卡片：极简网格 --- */
-.baby-facts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px; /* 用间隙形成细线分割感 */
-    background: #e2e8f0; 
-    border: 1px solid #e2e8f0;
-    margin-bottom: 80px;
-}
-
-.baby-facts article {
-    background: #ffffff;
-    padding: 40px;
-    transition: background 0.3s ease;
-}
-
-.baby-facts article:hover {
-    background: #f8fafc;
-}
-
-.baby-facts span {
-    font-family: 'Inter', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: #cbd5e1;
-}
-
-.baby-facts h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem;
-    color: #0f172a;
-    margin: 15px 0;
-}
-
-/* --- 故事区域：分栏排版 --- */
-.baby-story {
-    background: white;
-    padding: 80px clamp(30px, 10vw, 150px);
-    border: none;
-}
-
-.baby-story h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 5vw, 56px);
-    line-height: 1.2;
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-.baby-story-text {
-    column-count: 2;
-    column-gap: 80px;
-    text-align: justify;
-}
-
-.baby-story-text p {
-    font-size: 1.05rem;
-    line-height: 2;
-    color: #526173;
-    font-weight: 300;
-    margin-bottom: 24px;
-}
-
-/* 首字下沉效果 */
-.baby-story-text p:first-of-type::first-letter {
-    font-family: 'Playfair Display', serif;
-    font-size: 4rem;
-    float: left;
-    line-height: 1;
-    padding-right: 12px;
-    color: #0f172a;
-}
-
-/* --- 响应式调整 --- */
-@media (max-width: 980px) {
-    .baby-hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .baby-hero-copy p:not(.section-kicker) {
-        margin: 40px auto;
-    }
-    .baby-facts {
-        grid-template-columns: 1fr;
-    }
-    .baby-story-text {
-        column-count: 1;
-    }
-}/* --- 1. 全局字体与颜色降噪 --- */
-:root {
-  --primary-font: 'Inter', -apple-system, sans-serif;
-  --display-font: 'Playfair Display', Georgia, serif; /* 用于点睛的衬线体 */
-  --text-main: #1a1a1a;
-  --text-muted: #64748b;
-  --bg-subtle: #fafafa;
-  --border-color: #e2e8f0;
-}
-
-/* --- 2. 侧边栏：极致呼吸感 --- */
-.thought-sidebar {
-  background: #ffffff;
-  padding: 40px 0;
-  border-right: 1px solid var(--border-color);
+/* --- 2. 侧边栏 & 导航 (Magazine Sidebar) --- */
+.thought-sidebar, .site-header {
+  background: transparent;
+  padding: 60px 40px;
+  border-right: 1px solid var(--border-subtle);
 }
 
 .thought-brand {
   font-family: var(--primary-font);
-  letter-spacing: 0.3em; /* 极宽间距体现品牌感 */
-  font-weight: 300;
+  letter-spacing: 0.4em; /* 奢侈品级字间距 */
+  font-weight: 200;
   text-transform: uppercase;
-  padding: 0 40px;
-  margin-bottom: 60px;
-  border-bottom: none;
+  font-size: 0.9rem;
+  margin-bottom: 80px;
 }
 
 .thought-menu {
-  gap: 32px; /* 增加选项间距 */
-  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .thought-menu a {
-  font-family: var(--primary-font);
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 400;
+  text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.2em;
   color: var(--text-muted);
-  transition: color 0.4s ease, letter-spacing 0.4s ease;
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .thought-menu a:hover,
 .thought-menu a[aria-current="page"] {
   color: var(--text-main);
-  letter-spacing: 0.25em; /* 悬停时舒张 */
+  letter-spacing: 0.35em; /* 悬停时的舒张感 */
+  padding-left: 5px;
 }
 
-/* --- 3. 内容区：大面积留白与平衡 --- */
-.thought-content {
-  padding: 100px clamp(40px, 8vw, 120px);
-  background: #ffffff;
+/* --- 3. 页面布局 (Editorial Layout) --- */
+.content-page, .thought-content, .baby-page {
+  padding: 100px clamp(40px, 10vw, 150px);
+  max-width: 1600px;
+  margin: 0 auto;
 }
 
-.thought-hero {
-  gap: 60px;
+/* Hero 区域：高压迫感大标题 */
+.thought-hero, .baby-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
   margin-bottom: 120px;
 }
 
-.thought-hero h1 {
-  font-family: var(--primary-font); /* 保持现代感 */
+h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
+  font-family: var(--primary-font);
   font-weight: 800;
-  font-size: clamp(60px, 10vw, 120px);
-  letter-spacing: -0.06em; /* 紧凑标题与宽松正文形成对比 */
-  line-height: 0.85;
+  font-size: clamp(80px, 15vw, 180px);
+  letter-spacing: -0.07em; /* 标题紧缩，产生视觉冲击 */
+  line-height: 0.8;
+  margin: 0;
+  text-transform: uppercase;
 }
 
-.thought-hero p {
-  font-family: var(--primary-font);
-  font-weight: 300; /* 使用轻字重 */
-  font-size: 1.1rem;
+.hero-description, .thought-hero p {
+  font-weight: 300;
+  font-size: 1.15rem;
   line-height: 1.8;
   color: var(--text-muted);
-  max-width: 400px;
+  max-width: 500px;
+  text-align: justify; /* 杂志式两端对齐 */
 }
 
-/* --- 4. 章节标题：低饱和度的高级感 --- */
+/* --- 4. 章节与分类 (Section Styling) --- */
 .thought-section-title {
-  margin: 0 0 60px 0;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
+  margin: 80px 0 60px 0;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 15px;
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
 }
 
 .thought-section-title span {
-  font-family: var(--display-font); /* 使用衬线体做装饰数字 */
+  font-family: var(--display-font);
   font-style: italic;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: #cbd5e1;
 }
 
 .thought-section-title h2 {
-  font-family: var(--primary-font);
-  font-size: 1rem;
+  font-size: 0.85rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.3em;
   font-weight: 600;
+  margin: 0;
 }
 
-/* --- 5. 圆形分类：低饱和色调 --- */
+/* 分类圆圈：低饱和度 + 柔和投影 */
 .thought-circle {
-  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
-  border: none;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
 
 .thought-circle:hover {
-  transform: translateY(-10px);
+  transform: scale(1.02) translateY(-5px);
 }
 
-.thought-circle-movie { 
-  background: #f8e1c2; /* 调低饱和度的橙色 */
+.thought-circle-movie { background: #f2e6d9; } /* 奶咖色 */
+.thought-circle-book  { background: #d9e2e5; } /* 灰蓝色 */
+.thought-circle-music { background: #ffffff; border: 1px solid var(--border-subtle) !important; }
+
+/* --- 5. 杂志摄影效果 (Photography) --- */
+.magazine-photo, .baby-photo {
+  filter: grayscale(100%) contrast(105%) sepia(5%); /* 胶片质感 */
+  transition: filter 1.2s ease;
+  box-shadow: 0 0 1px rgba(0,0,0,0.2); /* 模拟相纸边缘 */
 }
 
-.thought-circle-book { 
-  background: #d1dce0; /* 调低饱和度的灰蓝色 */
+.magazine-photo:hover, .baby-photo:hover {
+  filter: grayscale(0%) contrast(100%) sepia(0%);
 }
 
-.thought-circle-music { 
-  background: #ffffff;
-  border: 1px solid var(--border-color) !important;
+/* --- 6. 正文排版 (Typography Details) --- */
+.magazine-text, .baby-story-text {
+  column-count: 2; /* 双栏排版 */
+  column-gap: 60px;
+  text-align: justify;
 }
 
-.thought-circle span {
-  font-family: var(--primary-font);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  font-size: 1.2rem;
+.magazine-text p::first-letter {
+  font-family: var(--display-font);
+  font-size: 4.5rem;
+  float: left;
+  line-height: 0.85;
+  padding-right: 15px;
+  color: var(--text-main);
+}
+
+/* 页脚：杂志页码感 */
+.magazine-footer {
+  margin-top: 150px;
+  border-top: 1px solid var(--border-subtle);
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
   text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: #999;
+}
+
+/* --- 7. 响应式适配 --- */
+@media (max-width: 1024px) {
+  .magazine-text, .baby-story-text {
+    column-count: 1;
+  }
+  .thought-sidebar {
+    padding: 30px;
+  }
 }
