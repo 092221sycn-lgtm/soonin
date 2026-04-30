@@ -222,32 +222,32 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
 
 /* --- 7. 响应式适配 --- */
 @media (max-width: 1024px) {
-  .magazine-text, .baby-story-text {
-    column-count: 1;
-  }
-  .thought-sidebar {
-    padding: 30px;
-  }
-/* 杂志跨页容器 */
+    .magazine-text, .baby-story-text {
+        column-count: 1;
+    }
+    .thought-sidebar {
+        padding: 30px;
+    }
+} /* <--- 这里之前漏掉了一个反花括号，导致后面的代码在大屏下失效 */
+
+/* --- 8. 杂志跨页布局 (About Me 专用) --- */
 .magazine-spread {
     display: flex;
-    background-color: #f4f3ef; /* 纸张色 */
+    background-color: #f4f3ef;
     min-height: 100vh;
     padding: 0;
     overflow-x: hidden;
 }
 
-/* 左右页面通用 */
 .page-left, .page-right {
     flex: 1;
     padding: 60px;
     display: flex;
     flex-direction: column;
     position: relative;
-    border-right: 1px solid rgba(0,0,0,0.05); /* 模拟中缝 */
+    border-right: 1px solid rgba(0,0,0,0.05);
 }
 
-/* 页眉 */
 .editorial-header {
     display: flex;
     justify-content: space-between;
@@ -258,7 +258,6 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     margin-bottom: 40px;
 }
 
-/* 左页：文字排版 */
 .editorial-content {
     display: flex;
     gap: 40px;
@@ -283,7 +282,6 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     text-align: justify;
 }
 
-/* 左页大图（第三张：光影） */
 .photo-large {
     margin-top: auto;
     width: 100%;
@@ -297,7 +295,6 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     filter: grayscale(20%);
 }
 
-/* 右页：图片网格 */
 .photo-grid-top {
     display: flex;
     gap: 20px;
@@ -305,8 +302,8 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     margin-bottom: 40px;
 }
 
-.photo-small { width: 35%; height: 60%; } /* 第四张：人像 */
-.photo-medium { width: 65%; height: 100%; } /* 第五张：咖啡 */
+.photo-small { width: 35%; height: 60%; }
+.photo-medium { width: 65%; height: 100%; }
 
 .photo-small img, .photo-medium img {
     width: 100%;
@@ -314,7 +311,6 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     object-fit: cover;
 }
 
-/* 右页底部：双栏文字 + 竖排文字 */
 .editorial-footer-content {
     display: flex;
     gap: 30px;
@@ -337,11 +333,9 @@ h1.magazine-title, .thought-hero h1, .baby-hero-copy h1 {
     color: #333;
 }
 
-/* 响应式：手机端变回单栏 */
 @media (max-width: 1024px) {
     .magazine-spread { flex-direction: column; }
     .photo-grid-top { height: auto; flex-direction: column; }
     .photo-small, .photo-medium { width: 100%; }
     .column-text { column-count: 1; }
 }
-  
