@@ -1,60 +1,208 @@
-<main class="magazine-spread">
-    <!-- 左对页 -->
-    <section class="page-left">
-        <header class="editorial-header">
-            <span class="page-number">12</span>
-            <span class="issue-tag">November 02 — Magazine Template.</span>
-        </header>
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    
+    <!-- 这里开始是所有的 CSS 样式 -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
 
-        <div class="editorial-content">
-            <div class="meta-sidebar">
-                <p>Ta nulautae. Des re nim rora</p>
-                <p>8.8 — 16.6</p>
-                <p>dolenietat aut rem quidi asperum quae estibus a iduiditur?</p>
-                <p>9.12 — 10.18</p>
+        :root {
+          --primary-font: 'Inter', -apple-system, sans-serif;
+          --display-font: 'Playfair Display', Georgia, serif;
+          --bg-paper: #f4f3ef;
+          --text-main: #1a1a1a;
+          --text-muted: #64748b;
+          --border-subtle: #d1d1d1;
+        }
+
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { margin: 0; font-family: var(--primary-font); background-color: var(--bg-paper); }
+
+        /* 杂志跨页容器 */
+        .magazine-spread {
+            display: flex;
+            background-color: var(--bg-paper);
+            min-height: 100vh;
+            padding: 0;
+            overflow-x: hidden;
+            color: var(--text-main);
+        }
+
+        /* 左右页面通用 */
+        .page-left, .page-right {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            border-right: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* 页眉 */
+        .editorial-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #999;
+            margin-bottom: 40px;
+        }
+
+        /* 左页：文字排版 */
+        .editorial-content {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .meta-sidebar {
+            width: 120px;
+            font-size: 11px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        .main-article { flex: 1; }
+
+        .lead-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        /* 左页大图（光影） */
+        .photo-large {
+            margin-top: auto;
+            width: 100%;
+            height: 400px;
+            margin-bottom: 0;
+        }
+
+        .photo-large img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%);
+        }
+
+        /* 右页：图片网格 */
+        .photo-grid-top {
+            display: flex;
+            gap: 20px;
+            height: 450px;
+            margin-bottom: 40px;
+        }
+
+        .photo-small { width: 35%; height: 60%; margin: 0; }
+        .photo-medium { width: 65%; height: 100%; margin: 0; }
+
+        .photo-small img, .photo-medium img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 右页底部：双栏文字 + 竖排文字 */
+        .editorial-footer-content {
+            display: flex;
+            gap: 30px;
+        }
+
+        .vertical-text {
+            writing-mode: vertical-rl;
+            font-size: 12px;
+            color: #888;
+            letter-spacing: 0.2em;
+            height: 300px;
+            margin: 0;
+        }
+
+        .column-text {
+            column-count: 2;
+            column-gap: 30px;
+            font-size: 12px;
+            line-height: 1.8;
+            text-align: justify;
+            color: #333;
+        }
+
+        /* 响应式：手机端 */
+        @media (max-width: 1024px) {
+            .magazine-spread { flex-direction: column; }
+            .photo-grid-top { height: auto; flex-direction: column; }
+            .photo-small, .photo-medium { width: 100%; }
+            .column-text { column-count: 1; }
+        }
+    </style>
+    <!-- CSS 样式结束 -->
+</head>
+
+<body>
+    <!-- 所有的 HTML 内容放在这里 -->
+    <main class="magazine-spread">
+        <!-- 左对页 -->
+        <section class="page-left">
+            <header class="editorial-header">
+                <span class="page-number">12</span>
+                <span class="issue-tag">November 02 — Magazine Template.</span>
+            </header>
+
+            <div class="editorial-content">
+                <div class="meta-sidebar">
+                    <p>Ta nulautae. Des re nim rora</p>
+                    <p>8.8 — 16.6</p>
+                    <p>dolenietat aut rem quidi asperum quae estibus a iduiditur?</p>
+                    <p>9.12 — 10.18</p>
+                </div>
+
+                <article class="main-article">
+                    <p class="lead-text">
+                        高质感，回避型人格，ADHD，上升双鱼爱幻想太阳天秤热爱和平月亮双子轻微精神分裂。兴趣爱好极其广泛，很会做香草 gelato 和水阳三宝。爱喝咖啡奶茶但会失眠，爱吃蛋糕软糖但会长痘。
+                    </p>
+                </article>
             </div>
 
-            <article class="main-article">
-                <p class="lead-text">
-                    高质感，回避型人格，ADHD，上升双鱼爱幻想太阳天秤热爱和平月亮双子轻微精神分裂。兴趣爱好极其广泛，很会做香草 gelato 和水阳三宝。爱喝咖啡奶茶但会失眠，爱吃蛋糕软糖但会长痘。
-                </p>
-            </article>
-        </div>
-
-        <!-- 第三张照片（光景）：放在左页下方 -->
-        <figure class="photo-large">
-            <img src="path/to/image_3.jpg" alt="Scenery Light">
-        </figure>
-    </section>
-
-    <!-- 右对页 -->
-    <section class="page-right">
-        <header class="editorial-header">
-            <span class="issue-tag">November 02 — Magazine Template.</span>
-            <span class="page-number">13</span>
-        </header>
-
-        <div class="photo-grid-top">
-            <!-- 第四张照片（人像）：对应图中左侧小图 -->
-            <figure class="photo-small">
-                <img src="path/to/image_4.jpg" alt="Portrait">
+            <!-- 第三张照片（光景） -->
+            <figure class="photo-large">
+                <img src="image_19f21f.jpg" alt="Scenery Light">
             </figure>
-            <!-- 第五张照片（咖啡）：对应图中右侧大图 -->
-            <figure class="photo-medium">
-                <img src="path/to/image_5.jpg" alt="Coffee">
-            </figure>
-        </div>
+        </section>
 
-        <div class="editorial-footer-content">
-            <p class="vertical-text">
-                其实平时听的最多的是流行，看的最多的是商业片，特俗一人。
-            </p>
-            <div class="column-text">
-                <p>
-                    #装 #大评论家 #宅女 #大哲学家 #大发明家 #大音乐家 #大画家 #大艺术家 #抽象 #大文豪 #格莱美金唱片诺贝尔未获得者 #大美女 #大教育家 #主理人 #娄烨 #贾樟柯 #塔可夫斯基 #杨德昌 #阿思多尔斯基 #戈达尔 #王家卫 #侯孝贤 #贝拉塔尔 #伯格曼 #侯麦 #库布里克 #昆汀 #大卫林奇 #黑泽明 #岩井俊二 #北野武 #是枝裕和 #李沧东 #朴赞郁 #Pink Floyd #王菲 #窦唯 #八仙饭店 #Radiohead #山本刚 #李斯特 #德彪西 #爵士 #Tech House #米兰昆德拉 #黑塞 #加缪 #金爱烂 #萨特 #康德 #叔本华 #海德格尔 #拉康 #齐泽克 #新浪潮 #波伏娃 #椎名林檎 #意识流 #精神分析 #后现代结构主义 #以太 #CULT #哲学 #审美积累 #审丑积累 #archive #安特卫普六君子 #Alexander McQueen #John Galiano #Jilsander #山本耀司 #川久保玲 #藤原浩 #nujabes #西原健一郎 #横山克 #thriller 以上所有 tag 都是平常用来装逼的（不是）
-                </p>
-                <p>我的真名，年纪，工作，性别，样貌。抱歉没有告知的义务。</p>
+        <!-- 右对页 -->
+        <section class="page-right">
+            <header class="editorial-header">
+                <span class="issue-tag">November 02 — Magazine Template.</span>
+                <span class="page-number">13</span>
+            </header>
+
+            <div class="photo-grid-top">
+                <!-- 第四张照片（人像） -->
+                <figure class="photo-small">
+                    <img src="28c4b294381809624cb8c72b25791123.jpg" alt="Portrait">
+                </figure>
+                <!-- 第五张照片（咖啡） -->
+                <figure class="photo-medium">
+                    <img src="232c894316ac16dd77c4f0a2655caa03.jpg" alt="Coffee">
+                </figure>
             </div>
-        </div>
-    </section>
-</main>
+
+            <div class="editorial-footer-content">
+                <p class="vertical-text">
+                    其实平时听的最多的是流行，看的最多的是商业片，特俗一人。
+                </p>
+                <div class="column-text">
+                    <p>
+                        #装 #大评论家 #宅女 #大哲学家 #大发明家 #大音乐家 #大画家 #大艺术家 #抽象 #大文豪 #格莱美金唱片诺贝尔未获得者 #大美女 #大教育家 #主理人 #娄烨 #贾樟柯 #塔可夫斯基 #杨德昌 #阿思多尔斯基 #戈达尔 #王家卫 #侯孝贤 #贝拉塔尔 #伯格曼 #侯麦 #库布里克 #昆汀 #大卫林奇 #黑泽明 #岩井俊二 #北野武 #是枝裕和 #李沧东 #朴赞郁 #Pink Floyd #王菲 #窦唯 #八仙饭店 #Radiohead #山本刚 #李斯特 #德彪西 #爵士 #Tech House #米兰昆德拉 #黑塞 #加缪 #金爱烂 #萨特 #康德 #叔本华 #海德格尔 #拉康 #齐泽克 #新浪潮 #波伏娃 #椎名林檎 #意识流 #精神分析 #后现代结构主义 #以太 #CULT #哲学 #审美积累 #审丑积累 #archive #安特卫普六君子 #Alexander McQueen #John Galiano #Jilsander #山本耀司 #川久保玲 #藤原浩 #nujabes #西原健一郎 #横山克 #thriller 以上所有 tag 都是平常用来装逼的（不是）
+                    </p>
+                    <p>我的真名，年纪，工作，性别，样貌。抱歉没有告知的义务。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
