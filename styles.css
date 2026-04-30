@@ -197,4 +197,131 @@ body {
     .baby-story-text {
         column-count: 1;
     }
+}/* --- 1. 全局字体与颜色降噪 --- */
+:root {
+  --primary-font: 'Inter', -apple-system, sans-serif;
+  --display-font: 'Playfair Display', Georgia, serif; /* 用于点睛的衬线体 */
+  --text-main: #1a1a1a;
+  --text-muted: #64748b;
+  --bg-subtle: #fafafa;
+  --border-color: #e2e8f0;
+}
+
+/* --- 2. 侧边栏：极致呼吸感 --- */
+.thought-sidebar {
+  background: #ffffff;
+  padding: 40px 0;
+  border-right: 1px solid var(--border-color);
+}
+
+.thought-brand {
+  font-family: var(--primary-font);
+  letter-spacing: 0.3em; /* 极宽间距体现品牌感 */
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 0 40px;
+  margin-bottom: 60px;
+  border-bottom: none;
+}
+
+.thought-menu {
+  gap: 32px; /* 增加选项间距 */
+  padding: 0 40px;
+}
+
+.thought-menu a {
+  font-family: var(--primary-font);
+  font-size: 0.85rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  transition: color 0.4s ease, letter-spacing 0.4s ease;
+}
+
+.thought-menu a:hover,
+.thought-menu a[aria-current="page"] {
+  color: var(--text-main);
+  letter-spacing: 0.25em; /* 悬停时舒张 */
+}
+
+/* --- 3. 内容区：大面积留白与平衡 --- */
+.thought-content {
+  padding: 100px clamp(40px, 8vw, 120px);
+  background: #ffffff;
+}
+
+.thought-hero {
+  gap: 60px;
+  margin-bottom: 120px;
+}
+
+.thought-hero h1 {
+  font-family: var(--primary-font); /* 保持现代感 */
+  font-weight: 800;
+  font-size: clamp(60px, 10vw, 120px);
+  letter-spacing: -0.06em; /* 紧凑标题与宽松正文形成对比 */
+  line-height: 0.85;
+}
+
+.thought-hero p {
+  font-family: var(--primary-font);
+  font-weight: 300; /* 使用轻字重 */
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  max-width: 400px;
+}
+
+/* --- 4. 章节标题：低饱和度的高级感 --- */
+.thought-section-title {
+  margin: 0 0 60px 0;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+}
+
+.thought-section-title span {
+  font-family: var(--display-font); /* 使用衬线体做装饰数字 */
+  font-style: italic;
+  font-size: 1.5rem;
+  color: #cbd5e1;
+}
+
+.thought-section-title h2 {
+  font-family: var(--primary-font);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+}
+
+/* --- 5. 圆形分类：低饱和色调 --- */
+.thought-circle {
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease;
+  border: none;
+}
+
+.thought-circle:hover {
+  transform: translateY(-10px);
+}
+
+.thought-circle-movie { 
+  background: #f8e1c2; /* 调低饱和度的橙色 */
+}
+
+.thought-circle-book { 
+  background: #d1dce0; /* 调低饱和度的灰蓝色 */
+}
+
+.thought-circle-music { 
+  background: #ffffff;
+  border: 1px solid var(--border-color) !important;
+}
+
+.thought-circle span {
+  font-family: var(--primary-font);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 1.2rem;
+  text-transform: uppercase;
 }
